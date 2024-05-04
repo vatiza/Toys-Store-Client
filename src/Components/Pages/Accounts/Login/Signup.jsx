@@ -1,8 +1,25 @@
+import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Signup = () => {
-  const handleSignUp = (event) => {};
+  const { user, createNewProfile } = useContext(AuthContext);
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photourl = form.photourl.value;
+    createNewProfile(email, password)
+      .then((result) => {
+        const createduser = result.user;
+        console.log(createduser);
+      })
+      .catch((error) => console.log(error.message));
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-grow-0">
@@ -16,6 +33,7 @@ const Signup = () => {
                 <span className="label-text">Name</span>
               </label>
               <input
+                name="name"
                 type="text"
                 placeholder="Your Name"
                 className="input input-bordered"
@@ -27,6 +45,7 @@ const Signup = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                name="email"
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -38,6 +57,7 @@ const Signup = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
+                name="password"
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
@@ -49,6 +69,7 @@ const Signup = () => {
                 <span className="label-text">Photo Url</span>
               </label>
               <input
+                name="photourl"
                 type="text"
                 placeholder="Photo URL"
                 className="input input-bordered"

@@ -2,7 +2,14 @@ import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const handleLogin = (event) => {};
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const User = { email, password };
+    console.log(User);
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-grow-0">
@@ -16,6 +23,7 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                name="email"
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -27,6 +35,7 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
+                name="password"
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
