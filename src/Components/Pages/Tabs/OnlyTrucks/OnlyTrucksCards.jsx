@@ -1,7 +1,7 @@
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-const OnlyCarsCards = ({ car }) => {
-  const { name, price, img, description, rating } = car;
+const OnlyTrucksCards = ({ truck }) => {
+  const { name, price, img, description, rating } = truck;
   return (
     <div className="m-5">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -27,4 +27,4 @@ const OnlyCarsCards = ({ car }) => {
   );
 };
 
-export default OnlyCarsCards;
+export default OnlyTrucksCards;

@@ -2,6 +2,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import AllToys from "./AllToys/AllToys";
 import OnlyCars from "./OnlyCars/OnlyCars";
+import OnlyTrucks from "./OnlyTrucks/OnlyTrucks";
+import OnlyPatrols from "./OnlyPatrols/OnlyPatrols";
 
 const ReactTabs = () => {
   return (
@@ -11,8 +13,8 @@ const ReactTabs = () => {
         <TabList>
           <Tab>All Toys</Tab>
           <Tab>Cars</Tab>
-          <Tab>Truck</Tab>
-          <Tab>Patrol</Tab>
+          <Tab>Trucks</Tab>
+          <Tab>Patrols</Tab>
         </TabList>
 
         <TabPanel>
@@ -22,10 +24,10 @@ const ReactTabs = () => {
        <OnlyCars></OnlyCars>
         </TabPanel>
         <TabPanel>
-          <h2>Show only Truck </h2>
+        <OnlyTrucks></OnlyTrucks>
         </TabPanel>
         <TabPanel>
-          <h2>Show only Patrol Cars </h2>
+         <OnlyPatrols></OnlyPatrols>
         </TabPanel>
       </Tabs>
     </div>
