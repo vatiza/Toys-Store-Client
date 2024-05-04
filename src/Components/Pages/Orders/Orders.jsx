@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Orders = () => {
   const toys = useLoaderData();
@@ -24,7 +25,23 @@ const Orders = () => {
       productImg: img,
       productId: _id,
     };
-    console.log(deliveryInfo);
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(deliveryInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          title: "Good job!",
+          text: "Order Placed Successfully!",
+          icon: "success",
+        });
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="flex gap-8 justify-center mb-4">
