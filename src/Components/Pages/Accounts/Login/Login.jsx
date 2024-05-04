@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Login = () => {
   const { loginwithuser, googleLogin } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,12 +17,14 @@ const Login = () => {
     loginwithuser(email, password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      navigate(from, { replace: true });
     });
   };
   const handleGoogleLogin = () => {
     googleLogin().then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      navigate(from, { replace: true });
     });
   };
   return (

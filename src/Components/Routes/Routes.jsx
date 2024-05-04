@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Accounts/Login/Login";
 import Signup from "../Pages/Accounts/Login/Signup";
 import DetailsToys from "../Pages/DetailsToys/DetailsToys";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <DetailsToys></DetailsToys>,
+        element: (
+          <PrivateRoutes>
+            <DetailsToys></DetailsToys>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/toys/${params.id}`),
       },
