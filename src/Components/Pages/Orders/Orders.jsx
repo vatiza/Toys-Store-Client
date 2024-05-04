@@ -1,8 +1,31 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const Orders = () => {
   const toys = useLoaderData();
+  const { person } = useContext(AuthContext);
   const { _id, name, price, img } = toys;
+  const placeOrder = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const c_name = form.name.value;
+    const address = form.address.value;
+    const city = form.city.value;
+    const phone = form.phone.value;
+    const deliveryInfo = {
+      c_name,
+      address,
+      city,
+      phone,
+      email: person.email,
+      productName: name,
+      productPrice: price,
+      productImg: img,
+      productId: _id,
+    };
+    console.log(deliveryInfo);
+  };
   return (
     <div className="flex gap-8 justify-center mb-4">
       <div>
@@ -12,7 +35,7 @@ const Orders = () => {
       </div>
       <div>
         <h1 className="font-bold text-3xl text-warning">Delivery Address</h1>
-        <form>
+        <form onSubmit={placeOrder}>
           <label className="form-control mb-5 w-full max-w-xs">
             <div className="label">
               <span className="label-text">What is your name?</span>
@@ -20,6 +43,7 @@ const Orders = () => {
             <input
               type="text"
               name="name"
+              defaultValue={person.displayName}
               placeholder="Name"
               className="input input-bordered w-full max-w-xs"
             />
@@ -59,7 +83,11 @@ const Orders = () => {
               />
             </label>
           </div>
-          <input className="btn btn-block btn-warning" type="submit" value='Place Order'/>
+          <input
+            className="btn btn-block btn-warning"
+            type="submit"
+            value="Place Order"
+          />
         </form>
       </div>
     </div>

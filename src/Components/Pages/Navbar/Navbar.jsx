@@ -96,6 +96,9 @@ const Navbar = () => {
               <li>
                 <a className="justify-between">{person?.displayName}</a>
               </li>
+              <li>
+                <a className="justify-between">My Orders</a>
+              </li>
 
               <li>
                 <a onClick={handleLogout}>Logout</a>
