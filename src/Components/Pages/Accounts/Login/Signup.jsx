@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Signup = () => {
-  const { user, createNewProfile, googleLogin } = useContext(AuthContext);
+  const { user, createNewProfile, googleLogin, updateuser } =
+    useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -15,7 +16,9 @@ const Signup = () => {
     const photourl = form.photourl.value;
     createNewProfile(email, password)
       .then((result) => {
+        updateuser(createduser, name, photourl);
         const createduser = result.user;
+
         console.log(createduser);
       })
       .catch((error) => console.log(error.message));
