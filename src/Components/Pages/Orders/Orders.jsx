@@ -73,6 +73,7 @@ const Orders = () => {
               type="text"
               name="address"
               placeholder="Address"
+              required
               className="input input-bordered w-full max-w-xs"
             />
           </label>
@@ -84,6 +85,7 @@ const Orders = () => {
               <input
                 type="text"
                 name="city"
+                required
                 placeholder="City"
                 className="input input-bordered w-full max-w-xs"
               />
@@ -96,6 +98,7 @@ const Orders = () => {
                 type="text"
                 name="phone"
                 placeholder="Phone"
+                required
                 className="input input-bordered w-full max-w-xs"
               />
             </label>

@@ -6,6 +6,7 @@ import Signup from "../Pages/Accounts/Login/Signup";
 import DetailsToys from "../Pages/DetailsToys/DetailsToys";
 import PrivateRoutes from "./PrivateRoutes";
 import Orders from "../Pages/Orders/Orders";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
       {
         path: "/details/:id",
