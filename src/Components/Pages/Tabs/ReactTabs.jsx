@@ -1,5 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import AllToys from "./AllToys/AllToys";
+import OnlyCars from "./OnlyCars/OnlyCars";
 
 const ReactTabs = () => {
   return (
@@ -14,10 +16,10 @@ const ReactTabs = () => {
         </TabList>
 
         <TabPanel>
-          <h2>All TOys Comming shoon</h2>
+          <AllToys></AllToys>
         </TabPanel>
         <TabPanel>
-          <h2>Show only Cars </h2>
+       <OnlyCars></OnlyCars>
         </TabPanel>
         <TabPanel>
           <h2>Show only Truck </h2>
