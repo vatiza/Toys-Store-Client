@@ -1,7 +1,8 @@
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { Link } from "react-router-dom";
 const OnlyTrucksCards = ({ truck }) => {
-  const { name, price, img, description, rating } = truck;
+  const { _id, name, price, img, description, rating } = truck;
   return (
     <div className="m-5">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -19,7 +20,9 @@ const OnlyTrucksCards = ({ truck }) => {
             readOnly
           />
           <div className="card-actions justify-end">
-            <button className="btn btn-warning">Add to Cart</button>
+            <Link to={`/details/${_id}`} className="btn btn-warning">
+              View Details
+            </Link>
           </div>
         </div>
       </div>
