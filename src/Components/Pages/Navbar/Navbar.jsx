@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import profile from "../../../assets/img/icons8-male-user-94.png";
 import logo from "../../../assets/img/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
@@ -85,7 +86,7 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src={person.photoURL}
+                  src={person?.photoURL ? person?.photoURL : profile}
                 />
               </div>
             </div>
@@ -94,7 +95,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between">Profile</a>
+                <a className="justify-between">{person?.displayName}</a>
               </li>
 
               <li>

@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Login = () => {
-  const { loginwithuser } = useContext(AuthContext);
+  const { loginwithuser, googleLogin } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     loginwithuser(email, password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    });
+  };
+  const handleGoogleLogin = () => {
+    googleLogin().then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
     });
@@ -66,7 +72,10 @@ const Login = () => {
               <span className="flex justify-center items-center">Or</span>
             </p>
             <div className="m-3 flex gap-2 justify-center">
-              <button className="btn btn-circle bg-red-600">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn btn-circle bg-red-600"
+              >
                 <FaGoogle />
               </button>
               <button className="btn btn-circle bg-blue-700">
