@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Signup = () => {
-  const { user, createNewProfile } = useContext(AuthContext);
+  const { user, createNewProfile, googleLogin } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -19,6 +19,14 @@ const Signup = () => {
         console.log(createduser);
       })
       .catch((error) => console.log(error.message));
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const guser = result.user;
+        console.log(guser);
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -90,7 +98,10 @@ const Signup = () => {
               <span className="flex justify-center items-center">Or</span>
             </p>
             <div className="m-3 flex gap-2 justify-center">
-              <button className="btn btn-circle bg-red-600">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn btn-circle bg-red-600"
+              >
                 <FaGoogle />
               </button>
               <button className="btn btn-circle bg-blue-700">
