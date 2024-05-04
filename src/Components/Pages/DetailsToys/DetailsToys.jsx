@@ -1,6 +1,7 @@
 import { Rating } from "@smastrom/react-rating";
-import { FaCartShopping } from "react-icons/fa6";
-import { useLoaderData } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa";
+
+import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsToys = () => {
   const toys = useLoaderData();
@@ -30,7 +31,9 @@ const DetailsToys = () => {
               <span className="text-warning">About:</span> {about}
             </p>
 
-            <button className="btn btn-warning"><FaCartShopping></FaCartShopping> Add To Cart</button>
+            <Link to={`/orders/${_id}`} className="btn btn-warning">
+              <FaCartPlus /> Buy Now
+            </Link>
           </div>
         </div>
       </div>

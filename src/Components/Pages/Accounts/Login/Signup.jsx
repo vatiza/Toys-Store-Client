@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Signup = () => {
-  const { user, createNewProfile, googleLogin, updateuser } =
-    useContext(AuthContext);
+  const { createNewProfile, googleLogin, updateuser } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
