@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
-
+import toast from 'react-hot-toast';
+const notify = () => toast.success('Successfully toasted!');
 const Login = () => {
   const { loginwithuser, googleLogin } = useContext(AuthContext);
   const location = useLocation();
@@ -17,6 +18,7 @@ const Login = () => {
     loginwithuser(email, password)
       .then((result) => {
         const loggedUser = result.user.email;
+        notify();
         
         fetch("http://localhost:5000/jwt", {
           method: "POST",

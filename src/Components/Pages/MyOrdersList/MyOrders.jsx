@@ -6,7 +6,13 @@ const MyOrders = () => {
   const { person } = useContext(AuthContext);
   const [myorders, setMyOrders] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${person.email}`)
+    const url = `http://localhost:5000/orders?email=${person.email}`;
+    fetch(url, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setMyOrders(data));
   }, []);
