@@ -4,7 +4,7 @@ import OnlyPatrolsCards from "./OnlyPatrolsCards";
 const OnlyPatrols = () => {
   const [patrols, setPatrols] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/patrols")
+    fetch("https://toys-store-js-server.vercel.app/patrols")
       .then((res) => res.json())
       .then((data) => setPatrols(data));
   }, []);

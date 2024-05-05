@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
-import toast from 'react-hot-toast';
-const notify = () => toast.success('Successfully toasted!');
+import toast from "react-hot-toast";
+const notify = () => toast.success("Successfully toasted!");
 const Login = () => {
   const { loginwithuser, googleLogin } = useContext(AuthContext);
   const location = useLocation();
@@ -19,8 +19,8 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user.email;
         notify();
-        
-        fetch("http://localhost:5000/jwt", {
+
+        fetch("https://toys-store-js-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-teype": "application/json",
@@ -30,7 +30,7 @@ const Login = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log("jwt response", data);
-            localStorage.setItem('accessToken',data.token);
+            localStorage.setItem("accessToken", data.token);
             navigate(from, { replace: true });
           });
       })
@@ -44,71 +44,71 @@ const Login = () => {
     });
   };
   return (
-      <div className="hero-content flex-col lg:flex-grow-0">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-        </div>
-        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleLogin} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                name="email"
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
-            </div>
-          </form>
-          <div className="px-7">
-            <p>
-              Don't have account please{" "}
-              <Link className="text-warning" to="/signup">
-                Sign Up
-              </Link>
-              <br />
-              <span className="flex justify-center items-center">Or</span>
-            </p>
-            <div className="m-3 flex gap-2 justify-center">
-              <button
-                onClick={handleGoogleLogin}
-                className="btn btn-circle bg-red-600"
-              >
-                <FaGoogle />
-              </button>
-              <button className="btn btn-circle bg-blue-700">
-                <FaGithub />
-              </button>
-              <button className="btn btn-circle bg-violet-700">
-                <FaTwitter />
-              </button>
-            </div>
+    <div className="hero-content flex-col lg:flex-grow-0">
+      <div className="text-center lg:text-left">
+        <h1 className="text-5xl font-bold">Login now!</h1>
+      </div>
+      <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <form onSubmit={handleLogin} className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              name="email"
+              type="email"
+              placeholder="email"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              className="input input-bordered"
+              required
+            />
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover">
+                Forgot password?
+              </a>
+            </label>
+          </div>
+          <div className="form-control mt-6">
+            <button className="btn btn-primary">Login</button>
+          </div>
+        </form>
+        <div className="px-7">
+          <p>
+            Don't have account please{" "}
+            <Link className="text-warning" to="/signup">
+              Sign Up
+            </Link>
+            <br />
+            <span className="flex justify-center items-center">Or</span>
+          </p>
+          <div className="m-3 flex gap-2 justify-center">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn btn-circle bg-red-600"
+            >
+              <FaGoogle />
+            </button>
+            <button className="btn btn-circle bg-blue-700">
+              <FaGithub />
+            </button>
+            <button className="btn btn-circle bg-violet-700">
+              <FaTwitter />
+            </button>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

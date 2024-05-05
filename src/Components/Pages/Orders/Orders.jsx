@@ -25,7 +25,7 @@ const Orders = () => {
       productImg: img,
       productId: _id,
     };
-    fetch("http://localhost:5000/orders", {
+    fetch("https://toys-store-js-server.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,7 +40,6 @@ const Orders = () => {
           text: "Order Placed Successfully!",
           icon: "success",
         });
-        
       })
       .catch((error) => console.log(error));
   };

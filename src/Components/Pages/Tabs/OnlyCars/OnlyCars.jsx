@@ -4,7 +4,7 @@ import OnlyCarsCards from "./OnlyCarsCards";
 const OnlyCars = () => {
   const [cars, setCars] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/cars")
+    fetch("https://toys-store-js-server.vercel.app/cars")
       .then((res) => res.json())
       .then((data) => setCars(data));
   }, []);

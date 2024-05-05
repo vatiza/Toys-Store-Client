@@ -6,7 +6,7 @@ const MyOrders = () => {
   const { person } = useContext(AuthContext);
   const [myorders, setMyOrders] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/orders?email=${person.email}`;
+    const url = `https://toys-store-js-server.vercel.app/orders?email=${person.email}`;
     fetch(url, {
       method: "GET",
       headers: {

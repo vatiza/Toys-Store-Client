@@ -38,7 +38,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(`https://toys-store-js-server.vercel.app/toys/${params.id}`),
       },
       {
         path: "/orders/:id",
@@ -48,11 +48,15 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(`https://toys-store-js-server.vercel.app/toys/${params.id}`),
       },
       {
         path: "/myorders",
-        element: <PrivateRoutes><MyOrders></MyOrders></PrivateRoutes>,
+        element: (
+          <PrivateRoutes>
+            <MyOrders></MyOrders>
+          </PrivateRoutes>
+        ),
       },
     ],
   },

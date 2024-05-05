@@ -4,7 +4,7 @@ import AllToysCards from "./AllToysCards";
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://toys-store-js-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
