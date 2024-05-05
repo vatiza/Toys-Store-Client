@@ -40,6 +40,7 @@ const Orders = () => {
           text: "Order Placed Successfully!",
           icon: "success",
         });
+        
       })
       .catch((error) => console.log(error));
   };
