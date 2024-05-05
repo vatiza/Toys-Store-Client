@@ -14,11 +14,25 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    loginwithuser(email, password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      navigate(from, { replace: true });
-    });
+    loginwithuser(email, password)
+      .then((result) => {
+        const loggedUser = result.user.email;
+        
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-teype": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("jwt response", data);
+            localStorage.setItem('accessToken',data.token);
+            navigate(from, { replace: true });
+          });
+      })
+      .catch((error) => console.log(error));
   };
   const handleGoogleLogin = () => {
     googleLogin().then((result) => {
@@ -28,7 +42,6 @@ const Login = () => {
     });
   };
   return (
-    <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-grow-0">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -94,7 +107,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
