@@ -18,21 +18,10 @@ const Login = () => {
     loginwithuser(email, password)
       .then((result) => {
         const loggedUser = result.user.email;
+        navigate(from, { replace: true });
         notify();
 
-        fetch("https://toys-store-js-server.vercel.app/jwt", {
-          method: "POST",
-          headers: {
-            "content-teype": "application/json",
-          },
-          body: JSON.stringify(loggedUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log("jwt response", data);
-            localStorage.setItem("accessToken", data.token);
-            navigate(from, { replace: true });
-          });
+
       })
       .catch((error) => console.log(error));
   };

@@ -49,6 +49,20 @@ const AuthProviders = ({ children }) => {
    
       setPerson(currentUser);
       setLoader(false);
+      if(currentUser){
+        fetch("https://toys-store-js-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-teype": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("jwt response", data);
+            localStorage.setItem("accessToken", data.token);
+          });
+      }
       return () => {
         return unsubscribe();
       };

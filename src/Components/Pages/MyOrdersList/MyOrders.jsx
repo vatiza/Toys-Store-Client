@@ -15,7 +15,7 @@ const MyOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => setMyOrders(data));
-  }, []);
+  }, [person.email]);
   return (
     <div className="mt-8">
       <div className="overflow-x-auto">
@@ -34,9 +34,9 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {myorders.map((orders) => (
+            {myorders.map((orders) => 
               <OrderList key={orders._id} orders={orders}></OrderList>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
